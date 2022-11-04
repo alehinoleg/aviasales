@@ -1,0 +1,56 @@
+.panel {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 323px;
+  height: 270px;
+}
+
+.title {
+  margin: 20px 20px 20px 20px;
+  display: block;
+  text-transform: uppercase;
+}
+
+.listTransplants {
+  margin: 0;
+  padding: 0;
+}
+
+.listTransplantsLi {
+  list-style: none;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.liSpan {
+  margin-left: 10px;
+}
+
+.checkbox {
+  border: 1px solid #9abbce;
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 950px) {
+  .panel {
+    width: 94%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .listTransplants {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .liSpan {
+    font-size: 13px;
+  }
+
+  .checkbox {
+    width: 13px;
+    height: 13px;
+  }
+}

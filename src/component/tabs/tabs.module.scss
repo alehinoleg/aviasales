@@ -1,0 +1,42 @@
+.tabsWrap {
+  display: flex;
+}
+
+.button {
+  width: 170px;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid #dfe5ec;
+  text-transform: uppercase;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.button:first-child {
+  border-radius: 5px 0 0 5px;
+  background: #2196f3;
+}
+
+.button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.button:hover {
+  background-color: aliceblue;
+}
+
+.active {
+  background: #2196f3;
+  color: #fff;
+}
+
+.active:hover {
+  background-color: #2196f3;
+}
+
+@media (max-width: 950px) {
+  .button {
+    width: 33%;
+    font-size: 12px;
+  }
+}
