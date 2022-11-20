@@ -1,106 +1,59 @@
-import { allFunc, noTransferFunc, oneTransferFunc, twoTransferFunc, threeTransferFunc } from './action'
+//import { all, nonStop, oneTransplants, threeTransplants, twoTransplants } from './action'
 
 const defaultAvia = {
   all: false,
-  noTransfer: false,
-  oneTransfer: false,
-  twoTransfer: false,
-  threeTransfer: false,
+  nonStop: false,
+  oneTransplants: false,
+  twoTransplants: false,
+  threeTransplants: false
 }
 
-const reduceAvia = (state = defaultAvia, action) => {
-  if (action.type === allFunc) {
-    if (state.all === false) {
-      return {
-        all: true,
-        noTransfer: true,
-        oneTransfer: true,
-        twoTransfer: true,
-        threeTransfer: true,
-      }
-    } else {
-      return {
-        all: false,
-        noTransfer: false,
-        oneTransfer: false,
-        twoTransfer: false,
-        threeTransfer: false,
-      }
+const reducer = (state = defaultAvia, action) => {
+  const {all, nonStop, oneTransplants, twoTransplants, threeTransplants} = state;
+  switch (action.type) {
+  case 'ALL':
+    return  {
+      all: !all,
+      nonStop: !all,
+      oneTransplants: !all,
+      twoTransplants: !all,
+      threeTransplants: !all,
     }
-  }
-
-  if (action.type === noTransferFunc) {
-    if (state.noTransfer === false && state.all === true) {
-      return {
-        ...state, all: false, noTransfer: true
-      }
-    } 
-    if (state.noTransfer === false) {
-      return {
-        ...state, noTransfer: true
-      }
-    } else {
-      return {
-        ...state, noTransfer: false
-      }
+  case 'NONSTOP':
+    if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
+      return {...state, nonStop: !nonStop, all: !all}
     }
-  }
-
-  if (action.type === oneTransferFunc) {
-    if (state.oneTransfer === false) {
-      return {
-        ...state, oneTransfer: true
-      }
-    } else {
-      return {
-        ...state, oneTransfer: false
-      }
+    if (oneTransplants === true && twoTransplants === true && threeTransplants === true &&  nonStop === false && all === false)  {
+      return {...state, nonStop: !nonStop, all: !all}
     }
-  }
-
-  if (action.type === twoTransferFunc) {
-    if (state.twoTransfer === false) {
-      return {
-        ...state, twoTransfer: true
-      }
-    } else {
-      return {
-        ...state, twoTransfer: false
-      }
+    return {...state, nonStop: !nonStop}
+  case 'ONETRANSPLANTS':
+    if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
+      return {...state, oneTransplants: !oneTransplants, all: !all}
     }
-  }
-
-  if (action.type === threeTransferFunc) {
-    if (state.threeTransfer === false) {
-      return {
-        ...state, threeTransfer: true
-      }
-    } else {
-      return {
-        ...state, threeTransfer: false
-      }
+    if (oneTransplants === false && twoTransplants === true && threeTransplants === true &&  nonStop === true && all === false)  {
+      return {...state, oneTransplants: !oneTransplants, all: !all}
     }
+    return {...state, oneTransplants: !oneTransplants}
+  case 'TWOTRANSPLANTS':
+    if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
+      return {...state, twoTransplants: !twoTransplants, all: !all}
+    }
+    if (oneTransplants === true && twoTransplants === false && threeTransplants === true &&  nonStop === true && all === false)  {
+      return {...state, twoTransplants: !twoTransplants, all: !all}
+    }
+    return {...state, twoTransplants: !twoTransplants}
+  case 'THREETRANSPLANTS':
+    if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
+      return {...state, threeTransplants: !threeTransplants, all: !all}
+    }
+    if (oneTransplants === true && twoTransplants === true && threeTransplants === false &&  nonStop === true && all === false)  {
+      return {...state, threeTransplants: !threeTransplants, all: !all}
+    }
+    return {...state, threeTransplants: !threeTransplants}       
+  default:
+    return state;
   }
-  return state;
-  /*switch (action.type) {
-  case !allFunc : return {
-    all: true,
-    noTransfer: true,
-    oneTransfer: true,
-    twoTransfer: true,
-    threeTransfer: true,
-  }
-
-  case allFunc : return {
-    all: false,
-    noTransfer: false,
-    oneTransfer: false,
-    twoTransfer: false,
-    threeTransfer: false,
-  }
-
-  default: return state;
-  }*/
 }
 
-export default reduceAvia;
+export default reducer

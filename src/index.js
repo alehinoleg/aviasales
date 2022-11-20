@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { legacy_createStore as createStore } from 'redux';
 
-import reduceAvia from './component/redux/reduce';
+import reducer from './component/redux/reduce';
 import App from './component/app';
 
-const store = createStore(reduceAvia);
+const store = createStore(reducer)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  
   <Provider store={store}>
     <App />
   </Provider>

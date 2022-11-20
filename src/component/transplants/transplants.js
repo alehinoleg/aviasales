@@ -1,49 +1,45 @@
 import React from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { allFunc, noTransferFunc, oneTransferFunc, twoTransferFunc, threeTransferFunc } from '../redux/action';
+import { all, nonStop, oneTransplants, twoTransplants, threeTransplants} from '../redux/action'
 
 import styles from './transplants.module.scss'
 
-
 const Transplants = () => {
+  const state = useSelector(state => state)
   const dispatch = useDispatch();
-  const all = useSelector(state => state.all);
-  const noTransfer = useSelector(state => state.noTransfer);
-  const oneTransfer = useSelector(state => state.oneTransfer);
-  const twoTransfer = useSelector(state => state.twoTransfer);
-  const threeTransfer = useSelector(state => state.threeTransfer);
+  console.log(state);
   return (
     <div className={styles.panel}>
       <span className={styles.title}>Количество пересадок</span>
       <ul className={styles.listTransplants}>
         <li className={styles.listTransplantsLi}>
           <label>
-            <input type="checkbox" className={styles.checkbox} checked = {all} onClick={() => dispatch({type:allFunc})}/>
+            <input type="checkbox" className={styles.checkbox} checked={state.all} onChange={() => dispatch(all())}/>
             <span className={styles.liSpan}>Все</span>
           </label>
         </li>
         <li className={styles.listTransplantsLi}>
           <label>
-            <input type="checkbox" className={styles.checkbox} checked = {noTransfer} onClick={() => dispatch({type:noTransferFunc})}/>
+            <input type="checkbox" className={styles.checkbox} checked={state.nonStop} onChange={() => dispatch(nonStop())}/>
             <span className={styles.liSpan}>Без пересадок</span>
           </label>
         </li>
         <li className={styles.listTransplantsLi}>
           <label>
-            <input type="checkbox" className={styles.checkbox} checked = {oneTransfer} onClick={() => dispatch({type:oneTransferFunc})}/>
+            <input type="checkbox" className={styles.checkbox} checked={state.oneTransplants} onChange={() => dispatch(oneTransplants())}/>
             <span className={styles.liSpan}>1 пересадка</span>
           </label>
         </li>
         <li className={styles.listTransplantsLi}>
           <label>
-            <input type="checkbox" className={styles.checkbox} checked = {twoTransfer} onClick={() => dispatch({type:twoTransferFunc})}/>
+            <input type="checkbox" className={styles.checkbox} checked={state.twoTransplants} onChange={() => dispatch(twoTransplants())}/>
             <span className={styles.liSpan}>2 пересадки</span>
           </label>
         </li>
         <li className={styles.listTransplantsLi}>
           <label>
-            <input type="checkbox" className={styles.checkbox} checked = {threeTransfer} onClick={() => dispatch({type:threeTransferFunc})}/>
+            <input type="checkbox" className={styles.checkbox} checked={state.threeTransplants} onChange={() => dispatch(threeTransplants())}/>
             <span className={styles.liSpan}>3 пересадки</span>
           </label>
         </li>
