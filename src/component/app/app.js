@@ -1,11 +1,14 @@
 import React from 'react';
 
+
 import Logo from '../logo/logo';
 import Transplants from '../transplants';
 import Tabs from '../tabs';
-import Card from '../card';
+import ListCard from '../listCards';
+
 
 import styles from './app.module.scss'
+
 
 const App = () => {
   return (
@@ -15,11 +18,8 @@ const App = () => {
         <Transplants/>
         <div className={styles.wrapperbody}>
           <Tabs/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+          <ListCard/>
+          
           <div className={styles.button}>
             <button className={styles.moreButton}>Показать еще 5 билетов!</button>
           </div>

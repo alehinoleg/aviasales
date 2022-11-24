@@ -1,17 +1,17 @@
-//import { all, nonStop, oneTransplants, threeTransplants, twoTransplants } from './action'
+import {ALL, NONSTOP, ONETRANSPLANTS, TWOTRANSPLANTS, THREETRANSPLANTS} from './action'
 
 const defaultAvia = {
-  all: false,
-  nonStop: false,
-  oneTransplants: false,
-  twoTransplants: false,
-  threeTransplants: false
+  all: true,
+  nonStop: true,
+  oneTransplants: true,
+  twoTransplants: true,
+  threeTransplants: true
 }
 
-const reducer = (state = defaultAvia, action) => {
+const filterTickets = (state = defaultAvia, action) => {
   const {all, nonStop, oneTransplants, twoTransplants, threeTransplants} = state;
   switch (action.type) {
-  case 'ALL':
+  case ALL:
     return  {
       all: !all,
       nonStop: !all,
@@ -19,7 +19,7 @@ const reducer = (state = defaultAvia, action) => {
       twoTransplants: !all,
       threeTransplants: !all,
     }
-  case 'NONSTOP':
+  case NONSTOP:
     if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
       return {...state, nonStop: !nonStop, all: !all}
     }
@@ -27,7 +27,7 @@ const reducer = (state = defaultAvia, action) => {
       return {...state, nonStop: !nonStop, all: !all}
     }
     return {...state, nonStop: !nonStop}
-  case 'ONETRANSPLANTS':
+  case ONETRANSPLANTS:
     if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
       return {...state, oneTransplants: !oneTransplants, all: !all}
     }
@@ -35,7 +35,7 @@ const reducer = (state = defaultAvia, action) => {
       return {...state, oneTransplants: !oneTransplants, all: !all}
     }
     return {...state, oneTransplants: !oneTransplants}
-  case 'TWOTRANSPLANTS':
+  case TWOTRANSPLANTS:
     if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
       return {...state, twoTransplants: !twoTransplants, all: !all}
     }
@@ -43,7 +43,7 @@ const reducer = (state = defaultAvia, action) => {
       return {...state, twoTransplants: !twoTransplants, all: !all}
     }
     return {...state, twoTransplants: !twoTransplants}
-  case 'THREETRANSPLANTS':
+  case THREETRANSPLANTS:
     if (all === true && nonStop === true && oneTransplants === true && twoTransplants === true && threeTransplants === true) {
       return {...state, threeTransplants: !threeTransplants, all: !all}
     }
@@ -56,4 +56,4 @@ const reducer = (state = defaultAvia, action) => {
   }
 }
 
-export default reducer
+export default filterTickets

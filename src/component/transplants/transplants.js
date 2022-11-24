@@ -6,7 +6,7 @@ import { all, nonStop, oneTransplants, twoTransplants, threeTransplants} from '.
 import styles from './transplants.module.scss'
 
 const Transplants = () => {
-  const state = useSelector(state => state)
+  const state = useSelector(state => state.filterTicket )
   const dispatch = useDispatch();
   console.log(state);
   return (
