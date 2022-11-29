@@ -19,11 +19,6 @@ const App = () => {
         <div className={styles.wrapperbody}>
           <Tabs/>
           <ListCard/>
-          
-          <div className={styles.button}>
-            <button className={styles.moreButton}>Показать еще 5 билетов!</button>
-          </div>
-          
         </div>
       </div>
     </div>

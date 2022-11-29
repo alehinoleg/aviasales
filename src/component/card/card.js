@@ -17,18 +17,16 @@ const Card = (objCard) => {
   const min2 = duration2%60;
   
   const massiv = time1.split(':');
-  const min = (Number(massiv[0]) * 60) + Number(massiv[1])+ 633;
+  const min = (Number(massiv[0]) * 60) + Number(massiv[1])+ duration1;
   let h = Math.trunc(min/60);
   const m = min%60
   if (h > 24) {h = h - 24}
 
   const massiv2 = time1.split(':');
-  const min22 = (Number(massiv2[0]) * 60) + Number(massiv2[1])+ 633;
+  const min22 = (Number(massiv2[0]) * 60) + Number(massiv2[1])+ duration2;
   let h2 = Math.trunc(min22/60);
   const m2 = min%60
   if (h2 > 24) {h2 = h2 - 24}
-  console.log(segments);
-  console.log(duration1);
   return (
     <>
       <div className={styles.block}>
@@ -39,7 +37,7 @@ const Card = (objCard) => {
         <tr>
           <th>{`${segments[0].origin}-${segments[0].destination}`}</th>
           <th>В пути</th>
-          <th>{`${stops1.length} пересадки`}</th>
+          <th>{`${stops1.length} ${stops1.length === 0? 'пересадок': 'пересадки'}`}</th>
         </tr>
         <tr className={styles.trMargin}>
           <td>{`${time1} - ${h}:${m}`}</td>

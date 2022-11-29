@@ -8,7 +8,6 @@ import styles from './transplants.module.scss'
 const Transplants = () => {
   const state = useSelector(state => state.filterTicket )
   const dispatch = useDispatch();
-  console.log(state);
   return (
     <div className={styles.panel}>
       <span className={styles.title}>Количество пересадок</span>

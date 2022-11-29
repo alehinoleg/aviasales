@@ -12,6 +12,11 @@
   word-wrap: break-word;
 }
 
+.button:focus {
+  background: #2196f3;
+  color: #fff;
+}
+
 .button:first-child {
   border-radius: 5px 0 0 5px;
   background: #2196f3;
@@ -23,11 +28,6 @@
 
 .button:hover {
   background-color: aliceblue;
-}
-
-.active {
-  background: #2196f3;
-  color: #fff;
 }
 
 .active:hover {
