@@ -10,17 +10,14 @@ const defaultsorts = {
 export const tabsReducer = (state = defaultsorts, action) => {
   switch(action.type) {
   case CHEAP:
-    console.log(state);
     return {
       cheap: true, quick: false, optimal: false
     }
   case QUICK:
-    console.log(state);
     return {
       cheap: false, quick: true, optimal: false
     }
   case OPTIMAL:
-    console.log(state);
     return {
       cheap: false, quick: false, optimal: true
     }

@@ -10,19 +10,64 @@ import styles from './listCards.module.scss'
 const ListCard = () => {
   const [tickets, setTickets] = useState(5);
   //const tickets = useSelector(state => state.tickets);
-  const cards = useSelector(state => state.ticketReducer.data)
+  const allCards = useSelector(state => state.ticketReducer.data)
   const loader = useSelector(state => state.ticketReducer.loader)
   const tabsReducer = useSelector(state => state.tabsReducer)
+  const transplants = useSelector(state => state.filterTicket)
+  
   //const filterTickets = useSelector(state => state.filterTickets)
   const { tickedLoad } = useActions();
   useEffect(()=>{tickedLoad()}, []);
- 
+  
+  let cards = [];
   
   if (loader) {
     return (
       <span className={styles.loader}></span>
     )
   }
+
+  for (const property in transplants) {
+    if (property === 'all') {
+      console.log(property)
+      transplants[property] ? (cards.all = [...allCards]) : (cards = []);
+    } else
+    if (property === 'nonStop') {
+      console.log(property)
+      const without = [...allCards].filter(
+        (card) => card.segments[0].stops.length === 0 && card.segments[1].stops.length === 0
+      );
+      transplants[property] ? (cards.without = [...without]) : delete cards.without;
+    } else
+    if (property === 'oneTransplants') {
+      console.log(property)
+      const one = [...allCards].filter(
+        (card) => card.segments[0].stops.length === 1 && card.segments[1].stops.length === 1
+      )
+      transplants[property] ? (cards.one = [...one]) : delete cards.one;
+    } else 
+    if (property === 'twoTransplants') {
+      const two = [...allCards].filter(
+        (card) => card.segments[0].stops.length === 2 && card.segments[1].stops.length === 2
+      );
+      transplants[property] ? (cards.two = [...two]) : delete cards.two;
+    }
+    if (property === 'threeTransplants') {
+      console.log(property)
+      const three = [...allCards].filter(
+        (card) => card.segments[0].stops.length === 3 && card.segments[1].stops.length === 3
+      );
+      transplants[property] ? (cards.three = [...three]) : delete cards.three;
+    }
+  }
+  console.log(cards)
+
+  if (cards.all) {
+    cards = cards.all;
+  } else {
+    Object.values(cards).forEach((item) => cards.push(...item));
+  }
+  
 
   if (cards.length === 0) {
     return (
@@ -54,7 +99,8 @@ const ListCard = () => {
     })
   }
 
-  const el = cards.slice(0, tickets);
+  console.log([...cards]);
+  const el = [...cards].slice(0, tickets);
   const elment = el.map((el, id) => {
     return(
       <li className={styles.liCard} key={id}>

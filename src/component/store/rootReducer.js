@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import filterTickets from '../redux/reduce';
+import {filterTickets} from '../redux/reduce'
 
 import { ticketReducer } from './tickets/ticketsReducer';
 import { tabsReducer } from './tabs/tabsReducer';

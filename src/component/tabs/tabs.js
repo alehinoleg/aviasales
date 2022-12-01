@@ -9,11 +9,11 @@ const Tabs = () => {
   const dispatch = useDispatch();
   return (
     <div className={styles.tabsWrap}>
-      <button className={`${styles.button}`} onClick={() => dispatch(cheap())}>Самый дешевый</button>
+      <button autoFocus={true} className={styles.button} onClick={() => dispatch(cheap())}>Самый дешевый</button>
       <button className={styles.button} onClick={() => dispatch(quick())}>Самый быстрый</button>
       <button className={styles.button} onClick={() => dispatch(optimal())}>Оптимальный</button>
     </div>
   )
-}
+} 
 
 export default Tabs;

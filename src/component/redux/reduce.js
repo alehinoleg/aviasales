@@ -8,7 +8,7 @@ const defaultAvia = {
   threeTransplants: true
 }
 
-const filterTickets = (state = defaultAvia, action) => {
+export const filterTickets = (state = defaultAvia, action) => {
   const {all, nonStop, oneTransplants, twoTransplants, threeTransplants} = state;
   switch (action.type) {
   case ALL:
@@ -55,5 +55,3 @@ const filterTickets = (state = defaultAvia, action) => {
     return state;
   }
 }
-
-export default filterTickets
